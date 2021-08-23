@@ -17,7 +17,7 @@ class Dialog:
 		self.dialogTk.title('Passowrd')
 		self.dialogTk.protocol("WM_DELETE_WINDOW", self.on_closing)
 		self.dialogTk.bind('<Escape>', self.on_closing)
-		self.dialogTk.bind('<Return>', self.comfirm)
+		self.dialogTk.bind('<Return>', self.confirm)
 
 		self.passwordLabel = tk.Label(self.dialogTk,text="需要输入Root用户密码启动:", justify=tk.LEFT)
 		self.passwordLabel.grid(row=0, padx=5, sticky=tk.W)
@@ -25,16 +25,16 @@ class Dialog:
 		self.passwordEntry = tk.Entry(self.dialogTk, textvariable=self.password, show='*')
 		self.passwordEntry.grid(row=1, padx=5, sticky=tk.W+tk.E)
 		self.passwordEntry.focus_set()
-		self.loginButton = tk.Button(self.dialogTk, text="确认", command=self.comfirm, default=tk.ACTIVE)
+		self.loginButton = tk.Button(self.dialogTk, text="确认", command=self.confirm, default=tk.ACTIVE)
 		self.loginButton.grid(row=3, column=0)
 		self.dialogTk.mainloop()
 
 	def on_closing(self, event = None):
-		if tk.messagebox.askokcancel("Quit", "Do you want to quit?"):
+		if tk.messagebox.askokcancel("Quit", "真的要退出吗?"):
 			self.result = None
 			self.exitType = "quit"
 			self.dialogTk.destroy()
-	def comfirm(self, event = None):
+	def confirm(self, event = None):
 		#print(self.password.get())
 		self.result = self.password.get()
 		self.exitType = "entry"
