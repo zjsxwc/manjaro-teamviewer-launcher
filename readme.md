@@ -32,7 +32,8 @@ pkexec --user root systemctl start teamviewerd.service
 if [ $? -ne 0 ]; then
   exit 0
 else
-  /opt/teamviewer/tv_bin/script/teamviewer
+  sleep 2
+  /opt/teamviewer/tv_bin/script/teamviewer&
 fi
 ```
 
