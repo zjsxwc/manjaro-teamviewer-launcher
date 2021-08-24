@@ -23,3 +23,15 @@ chmod +x  teamviewer-launcher.py
 
 
 
+## 不用这个脚本直接用pkexec方式
+
+```bash
+pkexec --user root systemctl start teamviewerd.service
+if [ $? -ne 0 ]; then
+  exit 0
+else
+  /opt/teamviewer/tv_bin/script/teamviewer
+fi
+```
+
+
